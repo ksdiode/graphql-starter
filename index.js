@@ -3,9 +3,11 @@ config();
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import start from './graphql';
 
-import start from './graphql/index.js';
+import connectDB from './database';
 
+await connectDB(process.env.DB_URI);
 const app = express();
 app.use(cors(), bodyParser.json());
 
